@@ -1,0 +1,65 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../store/store';
+import { SearchBar } from '../components/SearchBar';
+import { FilterPanel } from '../components/FilterPanel';
+import { ProductCard } from '../components/ProductCard';
+
+export const StorePage: React.FC = () => {
+  const { filteredProducts } = useSelector((state: RootState) => state.products);
+
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <header className="bg-blue-600 text-white py-6 shadow-lg">
+        <div className="container mx-auto px-4">
+          <h1 className="text-3xl font-bold">Product Store</h1>
+          <p className="text-blue-100 mt-1">Find the perfect products for you</p>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 py-8">
+        <SearchBar />
+
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Filter Sidebar */}
+          <aside className="lg:w-64 flex-shrink-0">
+            <FilterPanel />
+          </aside>
+
+          {/* Products Grid */}
+          <main className="flex-1">
+            <div className="mb-4 text-gray-600">
+              {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'} found
+            </div>
+
+            {filteredProducts.length === 0 ? (
+              <div className="bg-white rounded-lg shadow-md p-12 text-center">
+                <svg
+                  className="mx-auto h-24 w-24 text-gray-400 mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <h3 className="text-xl font-semibold text-gray-700 mb-2">No products found</h3>
+                <p className="text-gray-500">Try adjusting your filters or search query</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            )}
+          </main>
+        </div>
+      </div>
+    </div>
+  );
+};
