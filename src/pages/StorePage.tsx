@@ -20,9 +20,10 @@ export const StorePage: React.FC = () => {
       <div className="container mx-auto px-4 py-8">
         <SearchBar />
 
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-6 bg-gray-50 rounded-lg shadow-md p">
           {/* Filter Sidebar */}
           <aside className="lg:w-64 flex-shrink-0">
+            <div className="mb-4 h-6"></div>
             <FilterPanel />
           </aside>
 
