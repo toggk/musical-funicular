@@ -7,7 +7,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="bg-red-500 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-orange-500 transition-shadow duration-300" style={{ margin: '10px', padding: '10px', border: '2px solid #000000ff' }}>
+    <div className="bg-gray-150 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-orange-500 transition-shadow duration-300" style={{ margin: '10px', padding: '10px', border: '2px solid #000000ff' }}>
       <div className="relative">
         <img
           src={product.image}
@@ -21,7 +21,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
       </div>
       <div className="p-4 relative min-h-[150px]">
-        <div className="text-xs text-gray-200 mb-1">{product.brand}</div>
+        <div className="text-xs text-gray-150 mb-1">{product.brand}</div>
         <h3 className="text-lg font-semibold mb-2 line-clamp-1">{product.name}</h3>
         <p className="text-sm text-black mb-3 line-clamp-2 py-4" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{product.description}</p>
         <div className="flex items-center justify-between">
@@ -33,7 +33,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <span className="text-sm text-gray-700">{product.rating}</span>
           </div>
         </div>
-        <div className="mt-3 text-xs text-yellow-200 bg-blue rounded px-2 py-1 absolute bottom-0">
+        <div className="mt-3 text-xs text-gray-150 bg-blue rounded px-2 py-1 absolute bottom-0">
           {product.category}
         </div>
       </div>
