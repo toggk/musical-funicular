@@ -7,7 +7,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="bg-red-500 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-orange-500 transition-shadow duration-300" style={{ margin: '10px', padding: '10px', border: '1px solid #000000ff' }}>
+    <div className="bg-red-500 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-orange-500 transition-shadow duration-300" style={{ margin: '10px', padding: '10px', border: '2px solid #000000ff' }}>
       <div className="relative">
         <img
           src={product.image}

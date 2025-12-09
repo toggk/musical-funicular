@@ -10,10 +10,9 @@ export const StorePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-150">
-      <header className="bg-gray-150 text-white py-6 shadow-lg">
+      <header className="bg-gray-150 text-white py-6 shadow-lg" style={{background: 'rgba(64, 0, 255, 0.8)', margin: '20px', paddingTop: '10px', border: '1px solid #000000ff', borderRadius: '8px' }}>
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold">Product Store</h1>
-          <p className="text-blue-100 mt-1">Find the perfect products for you</p>
+          <h1 className="text-x font-bold" style={{ paddingBottom: '10px',paddingInline: '20px' }}>Product Store</h1>
         </div>
       </header>
 
