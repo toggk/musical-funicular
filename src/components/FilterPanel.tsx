@@ -17,7 +17,7 @@ export const FilterPanel: React.FC = () => {
   const brands = Array.from(new Set(allProducts.map((p) => p.brand)));
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
+    <div className="bg-white p-4 rounded-lg shadow-md h-150 overflow-y-auto" style={{ margin: '10px', padding: '10px', border: '1px solid #000000ff' }}>
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold">Filters</h2>
         <button

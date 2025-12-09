@@ -1,0 +1,8 @@
+select {
+    text-align: left;
+    padding: 8px 12px;
+}
+option {
+    text-align: center;
+    padding-inline-start: 10px;
+}

@@ -9,8 +9,8 @@ export const StorePage: React.FC = () => {
   const { filteredProducts } = useSelector((state: RootState) => state.products);
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-blue-600 text-white py-6 shadow-lg">
+    <div className="min-h-screen bg-gray-150">
+      <header className="bg-gray-150 text-white py-6 shadow-lg">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-bold">Product Store</h1>
           <p className="text-blue-100 mt-1">Find the perfect products for you</p>
@@ -20,7 +20,7 @@ export const StorePage: React.FC = () => {
       <div className="container mx-auto px-4 py-8">
         <SearchBar />
 
-        <div className="flex flex-col lg:flex-row gap-6 bg-gray-50 rounded-lg shadow-md p">
+        <div className="flex flex-col lg:flex-row gap-6 bg-gray-50 rounded-lg shadow-md" style={{ margin: '20px', padding: '5px' }}>
           {/* Filter Sidebar */}
           <aside className="lg:w-64 flex-shrink-0">
             <div className="mb-4 h-6"></div>
@@ -28,8 +28,8 @@ export const StorePage: React.FC = () => {
           </aside>
 
           {/* Products Grid */}
-          <main className="flex-1">
-            <div className="mb-4 text-gray-600">
+          <main className="flex-1 margin-4">
+            <div className="mb-4 text-gray-600 p-4">
               {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'} found
             </div>
 
