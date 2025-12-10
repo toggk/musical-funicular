@@ -2,14 +2,8 @@ import type  {PayloadAction}  from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import type { Product, FilterOptions } from '../types/product';
 import { sampleProducts } from '../data/products';
+import type { ProductsState } from '../types/product';
 
-interface ProductsState {
-  allProducts: Product[];
-  filteredProducts: Product[];
-  searchQuery: string;
-  filters: FilterOptions;
-  sortBy: 'name' | 'price-asc' | 'price-desc' | 'rating';
-}
 
 const initialFilters: FilterOptions = {
   categories: [],

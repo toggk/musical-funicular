@@ -1,11 +1,48 @@
 import React from 'react';
 import type { Product } from '../types/product';
+import { useAppDispatch, useAppSelector } from '../store/store';
+import { addToCart } from '../store/cartSlice';
+import { useState } from 'react';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const dispatch = useAppDispatch();
+  const loading = useAppSelector((state) => state.cart.loading);
+  const [isAdding, setIsAdding] = useState<boolean>(false);
+  const [showSuccess, setShowSuccess] = useState<boolean>(false);
+
+  const handleAddToCart = async (): Promise<void> => {
+    setIsAdding(true);
+    try {
+      await dispatch(
+        addToCart({
+          productId: product.id,
+          quantity: 1,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+        })
+      ).unwrap();
+
+      // Show success animation
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 2000);
+    } catch (error) {
+      console.error('Failed to add to cart:', error);
+      alert('Failed to add item to cart. Please try again.');
+    } finally {
+      setIsAdding(false);
+    }
+  };
+
+  const getButtonText = (): string => {
+    if (isAdding) return 'Adding...';
+    if (showSuccess) return '✓ Added!';
+    return 'Add to Cart';
+  };
   return (
     <div className="bg-gray-150 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-orange-500 transition-shadow duration-300" style={{ margin: '10px', padding: '10px', border: '2px solid #000000ff' }}>
       <div className="relative">
@@ -37,6 +74,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {product.category}
         </div>
       </div>
+      <div className="mt-4">
+        <button
+          onClick={handleAddToCart}
+          disabled={loading || isAdding || !product.inStock}
+          className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 disabled:opacity-50"
+        >
+          {getButtonText()}
+        </button>
+      </div>
     </div>
   );
 };
+

@@ -10,6 +10,14 @@ export interface Product {
   inStock: boolean;
 }
 
+export interface ProductsState {
+  allProducts: Product[];
+  filteredProducts: Product[];
+  searchQuery: string;
+  filters: FilterOptions;
+  sortBy: 'name' | 'price-asc' | 'price-desc' | 'rating';
+}
+
 export interface FilterOptions {
   categories: string[];
   brands: string[];

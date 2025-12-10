@@ -1,12 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import type { RootState } from '../store/store';
+import { CartIcon } from '../components/CartIcon';
+import { CartDrawer } from '../components/CartDrawer';
 import { SearchBar } from '../components/SearchBar';
 import { FilterPanel } from '../components/FilterPanel';
 import { ProductCard } from '../components/ProductCard';
+import { useAppSelector } from '../store/store';
 
 export const StorePage: React.FC = () => {
-  const { filteredProducts } = useSelector((state: RootState) => state.products);
+  const { filteredProducts } = useAppSelector((state: RootState) => state.products);
+  const {isOpen} = useAppSelector((state) => state.cart);
+
 
   return (
     <div className="min-h-screen bg-gray-150">
@@ -14,10 +18,14 @@ export const StorePage: React.FC = () => {
         <div className="container mx-auto px-4">
           <h1 className="text-x font-bold" style={{ paddingBottom: '10px',paddingInline: '20px' }}>Product Store</h1>
         </div>
+        <div className="absolute top-6 right-6">
+          <CartIcon />
+        </div>
       </header>
 
       <div className="container mx-auto px-4 py-8">
         <SearchBar />
+        {isOpen && <CartDrawer />}
 
         <div className="flex flex-col lg:flex-row gap-6 bg-gray-50 rounded-lg shadow-md" style={{ margin: '20px', padding: '5px' }}>
           {/* Filter Sidebar */}
@@ -25,6 +33,11 @@ export const StorePage: React.FC = () => {
             <div className="mb-4 h-6"></div>
             <FilterPanel />
           </aside>
+          <div className="lg:w-20 flex-shrink-0 flex items-center justify-center"> 
+            <div className="h-full w-px bg-gray-300">
+              {/* Vertical Divider */}
+            </div>
+          </div>
 
           {/* Products Grid */}
           <main className="flex-1 margin-4">
