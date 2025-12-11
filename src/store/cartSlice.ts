@@ -192,7 +192,7 @@ const cartSlice = createSlice({
         );
 
         if (existingItem) {
-          existingItem.quantity += newItem.quantity;
+          existingItem.quantity += 1;
         } else {
           state.items.push(newItem);
         }
