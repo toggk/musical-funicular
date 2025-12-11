@@ -3,7 +3,7 @@ import type { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { updateCartItem, removeFromCart } from '../store/cartSlice';
 import type { CartItem as CartItemType } from '../types/cart';
-
+import '../components/styles/CartItem.css';
 interface CartItemProps {
   item: CartItemType;
 }
@@ -103,7 +103,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
           </button>
         </div>
 
-        <div className="item-footer">
+        <div className="item-footer" style={{ marginTop: '10px' , justifyContent: 'space-between', display: 'flex' }}>
           <span className="item-total">Total: ${itemTotal}</span>
           <button
             className="remove-button"
