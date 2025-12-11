@@ -3,6 +3,7 @@ import type { Product } from '../types/product';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { addToCart } from '../store/cartSlice';
 import { useState } from 'react';
+import './styles/ProductCard.css';
 
 interface ProductCardProps {
   product: Product;

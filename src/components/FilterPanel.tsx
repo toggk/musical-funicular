@@ -8,6 +8,7 @@ import {
   clearFilters,
 } from '../store/productsSlice';
 import type { RootState } from '../store/store';
+import './styles/FilterPanel.css';
 
 
 export const FilterPanel: React.FC = () => {

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { closeCart, fetchCart } from '../store/cartSlice';
 import CartItem from './CartItem';
+import './styles/CartDrawer.css';
 
 export const CartDrawer: React.FC = () => {
   const dispatch = useAppDispatch();

@@ -6,6 +6,7 @@ import { SearchBar } from '../components/SearchBar';
 import { FilterPanel } from '../components/FilterPanel';
 import { ProductCard } from '../components/ProductCard';
 import { useAppSelector } from '../store/store';
+import './styles/StorePage.css';
 
 export const StorePage: React.FC = () => {
   const { filteredProducts } = useAppSelector((state: RootState) => state.products);

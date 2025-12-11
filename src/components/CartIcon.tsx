@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { toggleCart } from '../store/cartSlice';
+import './styles/CartIcon.css';
 
 export const CartIcon: React.FC = () => {
   const dispatch = useAppDispatch();
