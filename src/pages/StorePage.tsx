@@ -22,11 +22,9 @@ export const StorePage: React.FC = () => {
           <CartIcon />
         </div>
       </header>
-
+      <CartDrawer />
       <div className="container mx-auto px-4 py-8">
         <SearchBar />
-        {isOpen && <CartDrawer />}
-
         <div className="flex flex-col lg:flex-row gap-6 bg-gray-50 rounded-lg shadow-md" style={{ margin: '20px', padding: '5px' }}>
           {/* Filter Sidebar */}
           <aside className="lg:w-64 flex-shrink-0">

@@ -198,7 +198,7 @@ const cartSlice = createSlice({
         }
 
         cartSlice.caseReducers.calculateTotals(state);
-        state.isOpen = true;
+        // state.isOpen = true;
       })
       .addCase(addToCart.rejected, (state, action) => {
         state.loading = false;

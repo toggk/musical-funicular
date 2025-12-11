@@ -14,7 +14,16 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
 
   const handleQuantityChange = async (newQuantity: number): Promise<void> => {
-    if (newQuantity < 1) return;
+    if (newQuantity < 1) {
+      try {
+        await dispatch(removeFromCart(item.id)).unwrap();
+      }
+      catch (error) {
+        console.error('Failed to remove item:', error);
+      }
+      return;
+    }
+    console.log('Updating quantity to:', newQuantity);
 
     setIsUpdating(true);
     try {
@@ -46,7 +55,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const value = parseInt(e.target.value, 10);
-    if (value > 0) {
+    if (value >= 0) {
       handleQuantityChange(value);
     }
   };
@@ -71,10 +80,9 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
           <button
             className="qty-button"
             onClick={() => handleQuantityChange(item.quantity - 1)}
-            disabled={loading || isUpdating || item.quantity <= 1}
-            aria-label="Decrease quantity"
-          >
-            −
+            disabled={loading || isUpdating || item.quantity < 1}
+            aria-label="Decrease quantity">
+            -
           </button>
 
           <input
@@ -83,16 +91,14 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
             value={item.quantity}
             onChange={handleInputChange}
             disabled={loading || isUpdating}
-            min="1"
-            aria-label="Quantity"
-          />
+            min="0"
+            aria-label="Quantity"/>
 
           <button
             className="qty-button"
             onClick={() => handleQuantityChange(item.quantity + 1)}
             disabled={loading || isUpdating}
-            aria-label="Increase quantity"
-          >
+            aria-label="Increase quantity">
             +
           </button>
         </div>
@@ -103,8 +109,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
             className="remove-button"
             onClick={handleRemove}
             disabled={loading || isUpdating}
-            aria-label="Remove item"
-          >
+            aria-label="Remove item">
             Remove
           </button>
         </div>
